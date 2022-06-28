@@ -1,61 +1,105 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-.header-wrapper {
-    background-color: black;
-    width: 100%;
-    height: 20vh;
+.checkbox-container{
     display: flex;
-    justify-content: right;
+    justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 0;
 }
 .checkbox {
     height: 100px;
     width: 100px;
     display: flex;
-    right: 20px;
+    top: 0;
+    right: 0;
     justify-content: center;
-    position: relative;
+    position: absolute;
     cursor: pointer;
+    z-index: 9999;
+    transition: 400ms ease-in-out 0s;
 }
 .checkbox .trace {
-    width: 90px;
-    height: 8px;
-    background-color: whitesmoke;
+    width: 50px;
+    height: 2px;
+    background-color: black;
     position: absolute;
     border-radius: 4px;
     transition: 0.5s ease-in-out;
 }
 .checkbox .trace:nth-child(1){
-    top: 6px;
-    transform: rotate(0);
-}
-.checkbox .trace:nth-child(2){
     top: 26px;
     transform: rotate(0);
 }
-.checkbox .trace:nth-child(3){
+.checkbox .trace:nth-child(2){
     top: 46px;
+    transform: rotate(0);
+}
+.checkbox .trace:nth-child(3){
+    top: 66px;
     transform: rotate(0);
 }
 #toggle{
     display: none;
 }
+#toggle:checked + .checkbox{
+    background-color: black;
+}
+#toggle:checked ~ .menu{
+    box-shadow: 0px 0px 10vmax 100vmax black;
+    z-index: 1;
+}
+#toggle:checked ~ .menu-itens{
+    visibility: visible;
+    opacity: 1;
+}
 #toggle:checked + .checkbox .trace:nth-child(1){
     transform: rotate(45deg);
-    top: 27px;
+    top: 47px;
+    background-color: #0AD3FF;
 }
 #toggle:checked + .checkbox .trace:nth-child(2){
     transform: translateX(-100px);
-    width: 0px;
+    width: 30px;
     visibility: hidden;
     opacity: 0;
 }
 #toggle:checked + .checkbox .trace:nth-child(3){
     transform: rotate(-45deg);
+    top: 48px;
+    background-color: #0AD3FF;
+}
+/*MENU*/
+.menu{
+    position: absolute;
     top: 28px;
+    right: 30px;
+    background-color: transparent;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 0px black;
+    z-index: -1;
+    transition: 400ms ease-in-out 0s;
+}
+.menu-itens{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transition: 400ms ease-in-out 0s;
+}
+.menu-itens ul{
+    list-style-type: none;
+}
+.menu-itens ul li a{
+    margin: 10px 0;
+    color: #0AD3FF;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 40px;
 }
